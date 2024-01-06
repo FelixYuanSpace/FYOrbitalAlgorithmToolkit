@@ -20,5 +20,5 @@ Contributions to OrbitalAlgorithmToolkit are welcome. If you have suggestions fo
 
 ## Acknowledgments
 
-* Acknowledge any other contributors or third-party resources that have been instrumental in the development of OrbitalAlgorithmToolkit.
+* Acknowledge any other contributors or third-party resources that have been instrumental in the development of Orbital Algorithm Toolkit.
 * Special thanks and citation to the SGP4 source, as per their usage request. More information and the source can be found at [SGP4 Source Website](https://celestrak.org/publications/AIAA/2006-6753/).
