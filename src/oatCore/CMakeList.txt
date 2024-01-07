@@ -1,12 +1,11 @@
 # Set the source files for this directory
-set(ORBIT_CALC_SRC
-    your_orbit_calc_source1.cpp
-    your_orbit_calc_source2.cpp
+set(OAT_CORE_SRC
+    orbitmodel.cpp
     # Add other source files
 )
 
 # Create a library (either static or shared)
-add_library(orbit_calc ${ORBIT_CALC_SRC})
+add_library(oatCore ${OAT_CORE_SRC})
 
 # Link any necessary libraries
 # target_link_libraries(orbit_calc other_libraries_if_necessary)
