@@ -20,6 +20,7 @@
  *
  */
 #include "oat_geometry_types.h"
+#include <map>
 
 namespace oat
 {
@@ -29,14 +30,50 @@ namespace oat
     public:
         OrbitModel();
         virtual ~OrbitModel();
+
         /**
-		* @brief Calculate the world coordinate position of entity based on time.
+		* @brief Calculate the world coordinate position of entity at current JD time.
         *        The standard unit of Vec3 depends on the situation, and the celestial body is in kilometers <TODO To be determined>
         * @param jd [in] time , Time is Julian Day (in days <TODO To be determined > )
-        * 
+        * @return position at current JD time;
         */
         virtual Vec3 positionAtJD(double jd);
 
+        /**
+		* @brief Calculate the velocity vector of entity at current JD time.
+        *        <TODO To be determined unit>
+        * @param jd [in] time , Time is Julian Day (in days <TODO To be determined > )
+        * @return velocity at current JD time;
+        */
+        virtual Vec3 velocityAtJD(double jd);
+
+        /**
+		* @brief Calculate the quaternion of entity at current JD time.
+        *        <TODO To be determined unit>
+        * @param jd [in] time , Time is Julian Day (in days <TODO To be determined > )
+        * @return quatertion at current JD time;
+        */
+        virtual Quat quatAtJD(double jd);
+
+        //Get Period
+        virtual double getPeriod() const {return m_period;};
+        //Get enclosing sphere radius
+        virtual double getBoundingRadius() const {return m_boundingRadius;};
+        
+        /// @brief Orbital interpolation sample, Calculate a fixed number of equal point sets in a period
+        /// @param curJD current JD (Angle interpolation, time invalid)
+        /// @param ptNum interpolation number
+        /// @param mapTime2Position interpolation map
+        virtual void sample(double curJD, int ptNum, std::map<double, Vec3>& mapTime2Position);
+    protected:
+        //orbit period
+        double m_period;
+        //Orbital enclosing sphere radius
+        double m_boundingRadius;
+        //calc data start time
+        double m_beginTime;
+        //calc data end time;
+        double m_endTime;
 
     };
 

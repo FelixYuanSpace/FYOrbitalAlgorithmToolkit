@@ -26,7 +26,7 @@
  */
 
 #include <cmath>
-
+using namespace std;
 namespace oat {
 
     class Vec3{
@@ -388,6 +388,7 @@ namespace oat {
 
     };    // end of class Vec4
 
+    class Quat;
     class Matrix
     {
     public:

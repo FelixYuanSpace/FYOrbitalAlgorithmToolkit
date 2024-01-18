@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(OrbitAlgorithmToolkit VERSION 0.1.0 LANGUAGES C CXX)
+
+SET(OAT_MAJOR_VERSION 0)
+SET(OAT_MINOR_VERSION 0)
+SET(OAT_PATCH_VERSION 1)
+
+project(OrbitAlgorithmToolkit VERSION ${OAT_MAJOR_VERSION}.${OAT_MINOR_VERSION}.${OAT_PATCH_VERSION} LANGUAGES C CXX)
 
 # Dynamic vs Static Linking
 OPTION(DYNAMIC_OAT "Set to ON to build OrbitAlgorithmToolkit for dynamic linking.  Use OFF for static." ON)
