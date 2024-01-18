@@ -1,3 +1,10 @@
+# ADD MACRO DEFINED
+IF(DYNAMIC_OAT)
+    ADD_DEFINITIONS(-DOAT_LIB_DYNAMIC)
+ELSE()
+    ADD_DEFINITIONS(-DOAT_LIB_STAITC)
+ENDIF()
+
 # Set the source files for this directory
 set(OAT_CORE_SRC
     orbitmodel.cpp
