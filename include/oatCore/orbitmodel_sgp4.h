@@ -28,7 +28,13 @@ namespace oat
     class OrbitModel_SGP4 : public OrbitModel
     {
     public:
-        OrbitModel_SGP4();
+        /// @brief Init OrbitModel_SGP4
+        /// @param cTleLine1st The first row of TLE data
+        /// @param cTleLine2nd The Sencond row of TLE data
+        /// @param dBeginTIme calc data start time
+        /// @param dEndTime calc data end time
+        /// @param dDeltaTime delta time
+        OrbitModel_SGP4(const char *cTleLine1st, const char *cTleLine2nd, double dBeginTIme, double dEndTime, double dDeltaTime);
         ~OrbitModel_SGP4();
         
         /**
@@ -45,5 +51,25 @@ namespace oat
         * @return velocity at current JD time;
         */
         Vec3 velocityAtJD(double jd);
+        /**
+		* @brief Calculate the quaternion of entity at current JD time.
+        *        <TODO To be determined unit>
+        * @param jd [in] time , Time is Julian Day (in days <TODO To be determined > )
+        * @return quatertion at current JD time;
+        */
+        Quat quatAtJD(double jd);        
+
+    private:
+        // elsetrec: A structure that stores satellite orbital elements and other necessary data 
+        // for SGP4 orbit prediction calculations. This includes parameters derived from 
+        // Two-Line Element Set (TLE) data, such as inclination, eccentricity, right ascension 
+        // of the ascending node, and other data like mean motion and epoch time.
+        elsetrec satrec;
+
+        // gravconsttype: An enumeration type representing the gravitational constant model 
+        // to be used in SGP4 orbit prediction. Different models correspond to varying Earth 
+        // gravitational field parameters, affecting satellite orbit computations. Common models 
+        // include WGS-72, WGS-84, etc., each tailored to specific Earth models and satellite orbit calculations.
+        gravconsttype whichconst;
     };
 }

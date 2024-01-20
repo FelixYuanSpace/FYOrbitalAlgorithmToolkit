@@ -14,6 +14,7 @@ include_directories(${HEADER_PATH})
 # Set the source files for this directory
 set(OAT_CORE_SRC
     orbitmodel.cpp
+    orbitmodel_sgp4.cpp
     # Add other source files
 )
 
