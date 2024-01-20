@@ -22,13 +22,18 @@ namespace oat{
         // Make sure TLE Data right
         SGP4Funcs::twoline2rv(longstr1, longstr2, 'i', 'e', 'a', whichconst, startmfe, stopmfe, deltamin, satrec);
 
-        // 预计算轨道数据
+        // pre calc track
         double tsince = (dBeginTime - satrec.jdsatepoch) * 1440.0; // JD Convert to minutes
         while (tsince <= (dEndTime - satrec.jdsatepoch) * 1440.0) {
             double r[3], v[3];
             SGP4Funcs::sgp4(satrec, tsince, r, v);
             // save result
-            // ...
+            OrbitData data;
+            data.jd = satrec.jdsatepoch + tsince / 1440.0;
+            data.position = Vec3(r[0], r[1], r[2]);
+            data.velocity = Vec3(v[0], v[1], v[2]);
+
+            orbitData.push_back(data);
 
             tsince += dDeltaTime * 1440.0; // add step
         }

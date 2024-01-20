@@ -21,10 +21,18 @@
  */
 #include "oat_geometry_types.h"
 #include <map>
+#include <vector>
 
 namespace oat
 {
-
+    struct OrbitData {
+        // julian date
+        double jd; 
+        // position 
+        Vec3 position; 
+        // velocity
+        Vec3 velocity; 
+    };
     class OrbitModel
     {
     public:
@@ -74,6 +82,8 @@ namespace oat
         double m_beginTime;
         //calc data end time;
         double m_endTime;
+        //orbit data cache;
+        std::vector<OrbitData> orbitData;
 
     };
 
