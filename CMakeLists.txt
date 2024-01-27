@@ -4,6 +4,8 @@ SET(OAT_MAJOR_VERSION 0)
 SET(OAT_MINOR_VERSION 0)
 SET(OAT_PATCH_VERSION 1)
 
+
+
 project(OrbitAlgorithmToolkit VERSION ${OAT_MAJOR_VERSION}.${OAT_MINOR_VERSION}.${OAT_PATCH_VERSION} LANGUAGES C CXX)
 
 # Dynamic vs Static Linking
@@ -17,7 +19,10 @@ ENDIF()
 
 set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 
+include(CTest)
+enable_testing()
 
+add_subdirectory(tests)
 
 add_subdirectory(${SOURCE_DIR}/oatCore)
 

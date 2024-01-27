@@ -44,14 +44,54 @@ namespace oat{
 
     }
 
-    Vec3 OrbitModel_SGP4::positionAtJD(double jd)
-    {
-        return Vec3();
+    Vec3 OrbitModel_SGP4::positionAtJD(double jd) {
+        // check jd is in precalc range
+        if (orbitData.empty() || jd < orbitData.front().jd || jd > orbitData.back().jd) {
+            // if not in range return zero
+            return Vec3(); 
+        }
+
+        // find data in orbitData and interpolation(if needed) 
+        for (size_t i = 0; i < orbitData.size() - 1; ++i) {
+            if (jd >= orbitData[i].jd && jd <= orbitData[i + 1].jd) {
+                // Linear interpolation 
+                double factor = (jd - orbitData[i].jd) / (orbitData[i + 1].jd - orbitData[i].jd);
+                return Vec3(
+                    orbitData[i].position.x() + factor * (orbitData[i + 1].position.x() - orbitData[i].position.x()),
+                    orbitData[i].position.y() + factor * (orbitData[i + 1].position.y() - orbitData[i].position.y()),
+                    orbitData[i].position.z() + factor * (orbitData[i + 1].position.z() - orbitData[i].position.z())
+                );
+            }
+        }
+
+        // if can't find point, return nearest point
+        return orbitData.back().position;
     }
+
 
     Vec3 OrbitModel_SGP4::velocityAtJD(double jd)
     {
-        return Vec3();
+        // check jd is in precalc range
+        if (orbitData.empty() || jd < orbitData.front().jd || jd > orbitData.back().jd) {
+            // if not in range return zero
+            return Vec3(); 
+        }
+
+        // find data in orbitData and interpolation(if needed) 
+        for (size_t i = 0; i < orbitData.size() - 1; ++i) {
+            if (jd >= orbitData[i].jd && jd <= orbitData[i + 1].jd) {
+                // Linear interpolation 
+                double factor = (jd - orbitData[i].jd) / (orbitData[i + 1].jd - orbitData[i].jd);
+                return Vec3(
+                    orbitData[i].velocity.x() + factor * (orbitData[i + 1].velocity.x() - orbitData[i].velocity.x()),
+                    orbitData[i].velocity.y() + factor * (orbitData[i + 1].velocity.y() - orbitData[i].velocity.y()),
+                    orbitData[i].velocity.z() + factor * (orbitData[i + 1].velocity.z() - orbitData[i].velocity.z())
+                );
+            }
+        }
+
+        // 
+        return orbitData.back().velocity;
     }
 
     Quat OrbitModel_SGP4::quatAtJD(double jd)
