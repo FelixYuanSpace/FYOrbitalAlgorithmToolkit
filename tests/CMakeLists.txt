@@ -1,6 +1,9 @@
 # tests/CMakeLists.txt
-#find_package(OpenGL REQUIRED)
-#find_package(GLUT REQUIRED)
+if (USE_OPENGL_TEST)
+{
+    find_package(OpenGL REQUIRED)
+    find_package(GLUT REQUIRED)
+}
 
 SET(HEADER_PATH ${CMAKE_SOURCE_DIR}/include/oatCore)
 include_directories(${HEADER_PATH})

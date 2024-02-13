@@ -16,6 +16,9 @@ ELSE ()
     SET(OAT_SHARED_OR_STATIC "STATIC")
 ENDIF()
 
+# Open OpenGL Test Render Solar System
+OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." ON)
+
 
 set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 
