@@ -1,10 +1,17 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 SET(OAT_MAJOR_VERSION 0)
 SET(OAT_MINOR_VERSION 0)
 SET(OAT_PATCH_VERSION 1)
 
+# Open OpenGL Test Render Solar System
+OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." ON)
 
+
+IF (USE_OPENGL_TEST)
+    #set vcpkg toolchain file
+    set(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+ENDIF ()
 
 project(OrbitAlgorithmToolkit VERSION ${OAT_MAJOR_VERSION}.${OAT_MINOR_VERSION}.${OAT_PATCH_VERSION} LANGUAGES C CXX)
 
@@ -15,9 +22,6 @@ IF   (DYNAMIC_OAT)
 ELSE ()
     SET(OAT_SHARED_OR_STATIC "STATIC")
 ENDIF()
-
-# Open OpenGL Test Render Solar System
-OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." ON)
 
 
 set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
