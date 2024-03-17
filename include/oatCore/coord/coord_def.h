@@ -42,12 +42,7 @@ namespace oatCoord {
 		double Latitude;
 		/// @brief Altitude | unit: meter
 		double Altitude; 
-		GeoCoord(double x = 0, double y = 0, double z = 0)
-		{
-			this->Lontitude = x;
-			this->Latitude = y;
-			this->Altitude = z;
-		}
+		GeoCoord(double x = 0, double y = 0, double z = 0);
 	};
 
     /**

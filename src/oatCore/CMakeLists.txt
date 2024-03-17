@@ -8,13 +8,16 @@ ENDIF()
 SET(LIB_NAME oatCore)
 
 SET(HEADER_PATH ${CMAKE_SOURCE_DIR}/include/${LIB_NAME})
-include_directories(${HEADER_PATH})
 
+include_directories(${HEADER_PATH})
+include_directories(${HEADER_PATH}/coord)
+include_directories(${HEADER_PATH}/math)
 
 # Set the source files for this directory
 set(OAT_CORE_SRC
     orbitmodel.cpp
     orbitmodel_sgp4.cpp
+    coord/coord.cpp
     # Add other source files
 )
 
