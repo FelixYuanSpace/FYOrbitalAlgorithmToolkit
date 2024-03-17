@@ -5,7 +5,10 @@ SET(OAT_MINOR_VERSION 0)
 SET(OAT_PATCH_VERSION 1)
 
 # Open OpenGL Test Render Solar System
-OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." ON)
+OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." OFF)
+# debug mode
+OPTION(USE_DEBUG "Set to ON to enable debug mode.  Use OFF for disable." ON)
+
 
 
 IF (USE_OPENGL_TEST)

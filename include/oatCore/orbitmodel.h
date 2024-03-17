@@ -67,6 +67,8 @@ namespace oat
         virtual double getPeriod() const {return m_period;};
         //Get enclosing sphere radius
         virtual double getBoundingRadius() const {return m_boundingRadius;};
+        //Get Oribit data
+        virtual const std::vector<OrbitData>& getOrbitData() const {return orbitData;};
         
         /// @brief Orbital interpolation sample, Calculate a fixed number of equal point sets in a period
         /// @param curJD current JD (Angle interpolation, time invalid)

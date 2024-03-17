@@ -1,3 +1,4 @@
+#ifdef USE_OPENGL_TEST
 #include <GL/glut.h>
 
 float eyeX = 0.0, eyeY = 0.0, eyeZ = 20000000.0; // Camera position
@@ -6,6 +7,11 @@ float angleX = 0.0;          // Rotation angle around the X-axis
 float angleY = 0.0;          // Rotation angle around the Y-axis
 bool leftButtonDown = false; // Tracks whether the left mouse button is pressed
 int lastX, lastY;            // Stores the last mouse position
+
+void addSatellite(float x, float y, float z, float radius, float r, float g, float b)
+{
+
+}
 
 void display()
 {
@@ -22,31 +28,6 @@ void display()
     glFlush();
 }
 
-void keyboard(unsigned char key, int x, int y)
-{
-    switch (key)
-    {
-    case 'w':
-        eyeZ -= 1000000.0; // Move forward
-        break;
-    case 's':
-        eyeZ += 1000000.0; // Move backward
-        break;
-    case 'a':
-        eyeX -= 1000000.0; // Move left
-        break;
-    case 'd':
-        eyeX += 1000000.0; // Move right
-        break;
-    case 'q':
-        eyeY += 1000000.0; // Move up
-        break;
-    case 'e':
-        eyeY -= 1000000.0; // Move down
-        break;
-    }
-    glutPostRedisplay();
-}
 
 void mouse(int button, int state, int x, int y)
 {
@@ -113,9 +94,36 @@ void initEarth(int argc, char **argv)
     glMatrixMode(GL_MODELVIEW);
 
     glutDisplayFunc(display);
-    glutKeyboardFunc(keyboard);
+    //glutKeyboardFunc(keyboard);
     glutMouseFunc(mouse);
     glutMotionFunc(motion); // Register mouse motion event handler
 
     glutMainLoop();
 }
+
+void keyboard(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+    case 'w':
+        eyeZ -= 1000000.0; // Move forward
+        break;
+    case 's':
+        eyeZ += 1000000.0; // Move backward
+        break;
+    case 'a':
+        eyeX -= 1000000.0; // Move left
+        break;
+    case 'd':
+        eyeX += 1000000.0; // Move right
+        break;
+    case 'q':
+        eyeY += 1000000.0; // Move up
+        break;
+    case 'e':
+        eyeY -= 1000000.0; // Move down
+        break;
+    }
+    glutPostRedisplay();
+}
+#endif

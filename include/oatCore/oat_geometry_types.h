@@ -26,6 +26,7 @@
  */
 
 #include <cmath>
+#include <iostream>
 using namespace std;
 namespace oat {
 
@@ -196,6 +197,13 @@ namespace oat {
                 _v[2] *= inv;
             }
             return(norm);
+        }
+
+        //support for streaming
+        friend std::ostream& operator<<(std::ostream& os, const Vec3& v)
+        {
+            os << v._v[0] << " " << v._v[1] << " " << v._v[2];
+            return os;
         }
     };
 

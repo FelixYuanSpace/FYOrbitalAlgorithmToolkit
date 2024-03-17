@@ -23,8 +23,20 @@ include_directories("libsgp4")
 file(GLOB LIBSGP4_SRC "libsgp4/*.cpp") 
 list(APPEND OAT_CORE_SRC ${LIBSGP4_SRC})
 
+# IF(USE_DEBUG)
+#     ADD_DEFINITIONS(-DDEBUG)
+#     #生成调试符号文件
+#     #SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+# ENDIF()
+
 # Create a library (either static or shared)
 add_library(oatCore ${OAT_SHARED_OR_STATIC} ${OAT_CORE_SRC})
+
+
+# 如果需要，为oatCore目标添加特定的编译选项
+IF(USE_DEBUG)
+    target_compile_options(oatCore PRIVATE "-g")
+ENDIF()
 
 # Link any necessary libraries
 # target_link_libraries(orbit_calc other_libraries_if_necessary)

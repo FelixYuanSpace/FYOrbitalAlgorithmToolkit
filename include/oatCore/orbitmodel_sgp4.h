@@ -22,7 +22,6 @@
  *  
  */
 #include "orbitmodel.h"
-
 namespace oat
 {
     class OrbitModel_SGP4 : public OrbitModel
@@ -59,17 +58,5 @@ namespace oat
         */
         Quat quatAtJD(double jd);        
 
-    private:
-        // elsetrec: A structure that stores satellite orbital elements and other necessary data 
-        // for SGP4 orbit prediction calculations. This includes parameters derived from 
-        // Two-Line Element Set (TLE) data, such as inclination, eccentricity, right ascension 
-        // of the ascending node, and other data like mean motion and epoch time.
-        elsetrec satrec;
-
-        // gravconsttype: An enumeration type representing the gravitational constant model 
-        // to be used in SGP4 orbit prediction. Different models correspond to varying Earth 
-        // gravitational field parameters, affecting satellite orbit computations. Common models 
-        // include WGS-72, WGS-84, etc., each tailored to specific Earth models and satellite orbit calculations.
-        gravconsttype whichconst;
     };
 }

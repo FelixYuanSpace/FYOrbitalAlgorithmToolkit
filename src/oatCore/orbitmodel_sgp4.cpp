@@ -19,8 +19,12 @@ namespace oat{
         strncpy(longstr2, cTleLine2nd, 130);
         // init SGP4
         double startmfe, stopmfe, deltamin;
+        elsetrec satrec;
+        gravconsttype whichconst;
         // Make sure TLE Data right
         SGP4Funcs::twoline2rv(longstr1, longstr2, 'i', 'e', 'a', whichconst, startmfe, stopmfe, deltamin, satrec);
+        
+
 
         // pre calc track
         double tsince = (dBeginTime - satrec.jdsatepoch) * 1440.0; // JD Convert to minutes
