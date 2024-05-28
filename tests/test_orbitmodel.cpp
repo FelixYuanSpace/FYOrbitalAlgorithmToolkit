@@ -1,4 +1,5 @@
 #include "orbitmodel_sgp4.h"
+#include "oat_physics_const.h"
 #include "OpenGLEarth.hpp"
 #include <iostream>
 #include <fstream> // Include the necessary header file
@@ -9,6 +10,12 @@ int main(int argc, char **argv)
 #ifdef USE_OPENGL_TEST
     initEarth(argc, argv);
 #endif
+
+    double t = oat::Cal2jd(2020, 4, 9, 8, 0, 1);
+
+    int year, month, day, hour, minute;
+    double second;
+    oat::Jd2Cal(t, year, month, day, hour, minute, second);
 
     oat::OrbitModel_SGP4 model = oat::OrbitModel_SGP4(
         "1 25544U 98067A   20290.52835648  .00000867  00000-0  22898-4 0  9993",
