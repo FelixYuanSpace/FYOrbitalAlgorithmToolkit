@@ -8,6 +8,8 @@ SET(OAT_PATCH_VERSION 1)
 OPTION(USE_OPENGL_TEST "Set to ON to enable OpenGL Test with Render Solar System.  Use OFF for disable." OFF)
 # debug mode
 OPTION(USE_DEBUG "Set to ON to enable debug mode.  Use OFF for disable." ON)
+# debug in release mode
+OPTION(USE_DEBUG_RELEASE "Set to ON to enable debug in release mode.  Use OFF for disable." OFF)
 
 
 
@@ -25,7 +27,6 @@ IF   (DYNAMIC_OAT)
 ELSE ()
     SET(OAT_SHARED_OR_STATIC "STATIC")
 ENDIF()
-
 
 set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 

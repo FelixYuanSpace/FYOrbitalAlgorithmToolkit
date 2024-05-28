@@ -3,3 +3,5 @@
 .vscode
 /build/
 build
+/build_vs/
+build_vs
